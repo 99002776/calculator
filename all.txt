@@ -1,0 +1,330 @@
+#####formmmmmm
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+      p{
+    text-align: center;
+    font-size: 200%;
+    }
+    h1{
+    text-align: center;
+    font-size: 250%;
+    background-color: darkolivegreen;
+    border: 5px;
+    margin: 3%;
+}
+div{
+    text-align: center;
+    font-size: 180%;
+}
+input{
+            padding: 8px;
+        }
+body{
+    background-color: darkseagreen;
+}
+        
+    </style>
+    <script>
+        function validata() {
+ 
+            var names=['Charan','CharanTeja','Tejaa'];
+            var flag;
+            flag = 1;
+            if(flag == 1){
+ 
+           
+            if(document.getElementById("username").value.length<5 || document.getElementById("username").value.length>15) {
+                flag++;
+                alert("Username is not in the length of 5 to 15");
+            }
+            
+            else if(!document.getElementById("pass").value.match(/[a-z]/g) || !document.getElementById("pass").value.match(/[A-Z]/g) || !document.getElementById("pass").value.match(/[0-9]/g) || !document.getElementById("pass").value.match(/[!@#$%^&*]/g)) {
+                flag++;
+    
+                alert("Invalid password, please use all the characters.");
+            }
+ 
+            else if(!document.getElementById("mail").value.match(/[a-z A-Z 0-9]+[@]+[a-z]+[.]+[a-z]/)) {
+                flag++;
+                alert("Email id is not valid.");
+            }
+ 
+         else if(document.getElementById("phone").value.length!=10) {
+                flag++;
+                alert("Contact must have 10 digits");
+            }
+ 
+          else if( flag == 1)
+            {
+                for(let i =0; i<names.length; i++)
+                { 
+                    if(document.getElementById("username").value == names[i]){
+                        flag++;
+                        alert('user name exists');
+                    }
+                    
+                }
+                
+                
+            }
+            
+        
+       // }
+   
+            if(flag == 1)
+            {   
+               
+                alert('Successfully Registered');
+                document.getElementById("printhere").innerHTML="successfully registered";
+                
+            }
+        }
+    }
+ 
+    </script>
+</head>
+<body>
+    <h1>Form Validation</h1>
+    <form>
+        
+
+        <p>Name <input type="text" id="username"> <br></p>
+        <p> Password <input type="password" id="pass"> <br></p>
+        <p> Email <input type="text" id="mail"> <br></p>
+        <p> Contact <input type="text" id="phone"> <br></p>
+    
+        <p> Submit:<input type="button" value="submit" onclick="validata()"></p>
+   
+    <div id="printhere">
+ 
+    </div>
+</form>
+</body>
+</html>
+
+
+######arrayyyyyyyy
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: burlywood;
+            
+            font-size: 200%;
+        }
+    </style>
+    <script src="./common.js"></script>
+    <script>
+        let Laptops=["HP","DELL","LENOVO","MICROSOFTSURF","MI"];
+        let Mobiles=["MI","POCO","SAMSUNG","NOKIA","REALME","LENOVO"];
+        let tV=["ONEPLUS","MI","SONY"];
+         let dataDisplay=()=>{
+             let lis=$("ulis");
+             lis.innerHTML=" "
+             if($("Items").value=="laptop"){
+                for(let varabile=0;varabile<Laptops.length;varabile++)
+                    lis.innerHTML+="<li>"+Laptops[varabile]+"</li>"
+             }
+             else if($("Items").value=="mobile"){
+                for(let varabile=0;varabile<Mobiles.length;varabile++)
+                    lis.innerHTML+="<li>"+Mobiles[varabile]+"</li>"
+             }
+             
+             else if($("Items").value=="tv"){
+                for(let varabile=0;varabile<tV.length;varabile++)
+                    lis.innerHTML+="<li>"+tV[varabile]+"</li>"
+             }
+         }
+    </script>
+</head>
+<body>
+    <div>
+        Select any Option:
+        <select id="Items" onchange="dataDisplay()">
+        <option>NONE</option>
+        <option value="laptop">Laptops</option>
+        <option value="mobile">Mobiles</option>
+        <option value="tv">Tv</option>
+        </select>
+    </div>
+    <div>
+        <ul id="ulis"></ul>
+    </div>
+</body>
+</html>
+
+
+
+####app.js
+
+const { send } = require("process");
+
+express = require("express");
+app = express();
+
+hotel = require("./hotel.json");
+
+// Get Details of Hotels
+app.get("/details", function(req, res)
+{
+    nameList = [];
+    hotel.forEach(element =>
+    {
+        nameList.push(element.name) // this will only send name of the hotel, for full detail use push(element) 
+    });
+    res.send(nameList);
+})
+
+// Search Hotel by City (Mysore, Banglore and Hyderabad)
+app.get("/searchByCity", function(req, res)
+{
+    keyword = req.query.sCity;
+    searchCity = [];
+    hotel.forEach(element =>
+    {
+        if(keyword == element.city)
+        {
+            searchCity.push(element.name); // this will only send name of the hotel, for full detail use push(element)
+        }
+    });
+    res.send(searchCity);
+})
+
+// Search Hotel by Type (Veg/Non-Veg)
+app.get("/searchByType", function(req, res)
+{
+    keyword = req.query.sType;
+    searchType = [];
+    hotel.forEach(element =>
+    {
+        if(keyword == element.type)
+        {
+            searchType.push(element.name); // this will only send name of the hotel, for full detail use push(element)
+        }
+    });
+    res.send(searchType);
+})
+
+// Search by Cuisine (Indian, Arabian and Italian)
+app.get("/searchByCuisine", function(req, res)
+{
+    keyword = req.query.sCuisine;
+    searchCuisine = [];
+    hotel.forEach(element =>
+    {
+        for (const key in element.cuisine)
+        {
+            if(keyword == element.cuisine[key])
+            {
+                searchCuisine.push(element.name);
+            }
+        }
+    });
+    res.send(searchCuisine);
+})
+
+
+// Server Listening...
+app.listen(3333, function(req, res)
+{
+    console.log("Server listening to port 3333");
+})
+
+
+###hotel.json
+
+
+[
+    {
+        "name": "Elegance",
+        "city": "Hyderabad",
+        "type": "Non-Vegetarian",
+        "cuisine": ["Indian", "chinese","Italian"]
+    },
+    {
+        "name": "Kalyani",
+        "city": "Mysore",
+        "type": "Vegetarian",
+        "cuisine": ["Indian","chinese"]
+    },
+    {
+        "name": "rajbhavan",
+        "city": "bangalore",
+        "type": "Non-Vegetarian",
+        "cuisine": ["Indian"]
+    }
+]
+
+
+
+
+####hotel.html
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel List</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: darkseagreen;
+            font-size: 180%;
+        }
+        h1{
+            text-align: center;
+            background-color: darkolivegreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>HOTELS</h1>
+    <p><div>
+        <form action="http://localhost:3333/details">
+            View Hotels <input type="submit">
+        </form>
+    </div>
+    </p>
+    <p><div>
+        <form action="http://localhost:3333/searchByCity">
+            Search Hotels by City <input type="text" name="sCity">
+            <input type="submit">
+        </form>
+    </div>
+</p>
+    <p><div>
+        <form action="http://localhost:3333/searchByType">
+            Food Type  <select name="sType">
+               Food Type  <option>--type--</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Non-Vegetarian">Non-Vegetarian</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
+    </p>
+    <p><div>
+        <form action="http://localhost:3333/searchByCuisine">
+            Search Hotels by Cuisine <input type="text" name="sCuisine">
+            <input type="submit">
+        </form>
+    </div></p>
+    
+</body>
+</html>
