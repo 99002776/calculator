@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./mainstyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Forms</title>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <a href="./ex01.html">Basics</a>
+            <a href="./ex02.html">Formats</a>
+            <a href="./ex03.html">Tables</a>
+            <a href="./ex04.html">Images</a>
+            <a href="./ex05.html">Lists</a>
+            <a href="./ex06.html">web forms</a>
+        </nav>
+    </header>
+    <section>
+        <h2 class="sub">what are web forms</h2>
+        <p>
+            Interactive pages where inputs are taken from the users to register, give inputs to the applications to perform crud operations within a wreb application . 
+            in most of the cases, web apps have 80% of content which are read only.
+            forms are usually processed in aweb server. the priocessing is done using high level programming like php,jsp,asp.net,perl<br/>
+            however after nodejs came to the picture ,js is also used for processing web forms.
+        </p>
+
+    </section>
+    <section>
+        <form>
+            
+            <p><input type="email" placeholder="Enter Email" id="EmpEmail"/> </p>
+            <p><input type="date" placeholder="Enter Dob" id="Emp dob"/></p>
+            <p>Enter address 
+                <textarea id="empaddress">
+                    </textarea>
+            </p>
+            <p>
+                <datalist id="state">
+                    <option >AP</option>
+                    <option >UP</option>
+                    <option >MP</option>
+                    <option >kerala</option>
+                    <option >Tamilnadu</option>
+                    <option >Karnataka</option>
+                </datalist>
+                <input type="list" placeholder="select state" id="state" list="state"/>
+            </p>
+            <p><input type="tel" placeholder="Enter tel" id="emp tel"/></p>
+            <p>
+                select the qualification:<br/>
+                <select id="Empqualification">
+                    <option value="">Graduation</option>
+                    <option value="">UG</option>
+                    <option value="">PG</option>
+                    <option value="">University</option>
+                    <option value="">school</option>
+                </select>
+            </p>
+            <p>
+                Billing To: <input type="radio" name="loc">Home<input type="radio" name="loc">office
+            </p>
+            <p>
+                your other requirements:
+                <input type="checkbox">Swimming pool
+                <input type="checkbox">gym
+                <input type="checkbox">restaurent
+                <input type="checkbox">coffee
+                <input type="checkbox">shop
+            </p>
+            <p>Rate yourself
+            <input type="range" min="1" max="10" step="1"/>
+            </p>
+            <button type="button">Register</button>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Functions
+    </title>
+</head>
+<body>
+    <script>
+        function checkForNumber(v){
+            if(isNaN(v)){
+                alert("Invalid")
+                return false
+
+            }
+            else return true;
+        }
+       document.write(checkForNumber(123))
+       document.write(checkForNumber("abc"))
+       document.write(checkForNumber(1.2))
+       function calcProgram(){
+           var v1=prompt("Enter v1");
+           if(!checkForNumber(v1)){
+               return;
+           }
+           v1=parseFloat(v1);
+           var v2=prompt("Enter v2");
+           if(!checkForNumber(v2)){
+               return;
+           }
+           v2=parseFloat(v2);
+           var opr=prompt("enter operand")
+        
+        switch(opr){
+            case "+":
+            alert("add is "+(v1+v2))
+            break
+            case "-":
+            alert("sub "+(v1-v2))
+            break
+            case "*":
+            alert("mul "+(v1 * v2))
+            break
+            case "/":
+            alert("div "+(v1/v2))
+            break
+            default:
+            alert("end");
+            break
+        }
+
+
+       }
+       calcProgram();
+    </script>
+</body>
+</html>

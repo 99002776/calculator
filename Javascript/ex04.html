@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <script src="./scripts/mathcalc.js"></script>
+    <script>
+       function invokeOperation()
+       {
+            //take input
+           var FV= parseFloat(document.getElementById("number1").value)
+           var SV=parseFloat(document.getElementById("number2").value)
+           var OP=document.getElementById("operand").value
+           var Result=performOpertation(FV,SV,OP)
+           var presult=document.getElementById("pres")
+           presult.innerText="The Result:"+ Result
+ 
+           
+       }
+ 
+    </script>
+    <style>
+        div{
+            text-align: center;
+            color: chocolate;
+        }
+        h1{
+            text-align: center;
+            color: rgb(255, 240, 246);
+        }
+    </style>
+</head>
+<body>
+    <h1>Caluculator Program</h1>
+    <div>
+        <p>
+           Enter Value1:
+            <input type="number" id="number1">
+        </p>
+        <p>
+            Enter Value2:
+            <input type="number" id="number2">
+        </p>
+        <p>
+            Select operand:
+            <select id="operand">
+                <option>none</option>
+                <option>Add</option>
+                <option>Sub</option>
+                <option>Mul</option>
+                <option>div</option>
+                <option>square</option>
+                <option>squraeroot</option>
+            </select>
+        </p>
+        <p>
+            <button type="button" onclick="invokeOperation()">=</button>
+        </p >
+        <p id="pres">
+ 
+        </p>
+    </div>
+</body>
+</html>

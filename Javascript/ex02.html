@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        var v1=parseFloat(prompt("enter 1st val"))
+        if(isNaN(v1)){
+            alert("Not Valid")
+            v1=0
+        }else
+          v1=parseFloat(v1)
+        var v2=parseFloat(prompt("enter 2nd val"))
+        if(isNaN(v2)){
+            alert("Not Valid")
+            v2=0
+        }else
+        v2=parseFloat(v2)
+        var opr=prompt("enter operand")
+        document.write(typeof(v1))
+        switch(opr){
+            case "+":
+            alert("add is "+(v1+v2))
+            break
+            case "-":
+            alert("sub "+(v1-v2))
+            break
+            case "*":
+            alert("mul "+(v1 * v2))
+            break
+            case "/":
+            alert("div "+(v1/v2))
+            break
+                    }
+    </script>
+</body>
+</html>
